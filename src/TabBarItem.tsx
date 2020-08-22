@@ -50,7 +50,7 @@ const DEFAULT_INACTIVE_COLOR = 'rgba(255, 255, 255, 0.7)';
 
 export default class TabBarItem<T extends Route> extends React.Component<
   Props<T>
-> {
+  > {
   private getActiveOpacity = memoize(
     (position: Animated.Node<number>, routes: Route[], tabIndex: number) => {
       if (routes.length > 1) {
@@ -105,16 +105,8 @@ export default class TabBarItem<T extends Route> extends React.Component<
     const tabIndex = navigationState.routes.indexOf(route);
     const isFocused = navigationState.index === tabIndex;
 
-    const activeOpacity = this.getActiveOpacity(
-      position,
-      navigationState.routes,
-      tabIndex
-    );
-    const inactiveOpacity = this.getInactiveOpacity(
-      position,
-      navigationState.routes,
-      tabIndex
-    );
+    const activeOpacity = isFocused ? 1 : 0;
+    const inactiveOpacity = isFocused ? 0 : 1;
 
     let icon: React.ReactNode | null = null;
     let label: React.ReactNode | null = null;
@@ -151,25 +143,25 @@ export default class TabBarItem<T extends Route> extends React.Component<
       renderLabelPassed !== undefined
         ? renderLabelPassed
         : ({ route, color }: { route: T; color: string }) => {
-            const labelText = getLabelText({ route });
+          const labelText = getLabelText({ route });
 
-            if (typeof labelText === 'string') {
-              return (
-                <Animated.Text
-                  style={[
-                    styles.label,
-                    icon ? { marginTop: 0 } : null,
-                    { color },
-                    labelStyle,
-                  ]}
-                >
-                  {labelText}
-                </Animated.Text>
-              );
-            }
+          if (typeof labelText === 'string') {
+            return (
+              <Animated.Text
+                style={[
+                  styles.label,
+                  icon ? { marginTop: 0 } : null,
+                  { color },
+                  labelStyle,
+                ]}
+              >
+                {labelText}
+              </Animated.Text>
+            );
+          }
 
-            return labelText;
-          };
+          return labelText;
+        };
 
     if (renderLabel) {
       const activeLabel = renderLabel({
