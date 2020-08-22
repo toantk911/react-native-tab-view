@@ -1,6 +1,6 @@
 {
   "name": "@toantk911/react-native-tab-view",
-  "version": "2.15.1",
+  "version": "2.15.11",
   "description": "Tab view component for React Native",
   "main": "lib/commonjs/index.js",
   "react-native": "lib/module/index.js",
