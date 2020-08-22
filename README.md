@@ -4,6 +4,8 @@
 [![Version][version-badge]][package]
 [![MIT License][license-badge]][license]
 
+A folk from [satya164/react-native-tab-view](https://github.com/react-native-community/react-native-tab-view) which remove some animated components for better performance.
+
 A cross-platform Tab View component for React Native.
 
 - [Run the example app to see it in action](https://expo.io/@satya164/react-native-tab-view-demos).
