@@ -46,8 +46,7 @@ const DEFAULT_INACTIVE_COLOR = 'rgba(255, 255, 255, 0.7)';
 
 export default class TabBarItem<T extends Route> extends React.Component<
   Props<T>
-  > {
-
+> {
   render() {
     const {
       route,
@@ -111,25 +110,25 @@ export default class TabBarItem<T extends Route> extends React.Component<
       renderLabelPassed !== undefined
         ? renderLabelPassed
         : ({ route, color }: { route: T; color: string }) => {
-          const labelText = getLabelText({ route });
+            const labelText = getLabelText({ route });
 
-          if (typeof labelText === 'string') {
-            return (
-              <Animated.Text
-                style={[
-                  styles.label,
-                  icon ? { marginTop: 0 } : null,
-                  { color },
-                  labelStyle,
-                ]}
-              >
-                {labelText}
-              </Animated.Text>
-            );
-          }
+            if (typeof labelText === 'string') {
+              return (
+                <Animated.Text
+                  style={[
+                    styles.label,
+                    icon ? { marginTop: 0 } : null,
+                    { color },
+                    labelStyle,
+                  ]}
+                >
+                  {labelText}
+                </Animated.Text>
+              );
+            }
 
-          return labelText;
-        };
+            return labelText;
+          };
 
     if (renderLabel) {
       const activeLabel = renderLabel({
